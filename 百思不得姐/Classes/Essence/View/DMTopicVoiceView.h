@@ -12,6 +12,6 @@
 //帖子数据
 @property (nonatomic, strong) DMTopics *topic;
 
-+(instancetype)voiceView;
+
 - (void)reset;
 @end

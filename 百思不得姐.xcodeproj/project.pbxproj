@@ -22,6 +22,8 @@
 		176279551CBCD1F8007C83F5 /* DMConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 176279541CBCD1F8007C83F5 /* DMConst.m */; };
 		176279591CBCD740007C83F5 /* DMTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 176279571CBCD740007C83F5 /* DMTopicCell.m */; };
 		1762795A1CBCD740007C83F5 /* DMTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 176279581CBCD740007C83F5 /* DMTopicCell.xib */; };
+		17C590B51D069F55002EFD46 /* DMHomeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C590B41D069F55002EFD46 /* DMHomeButton.m */; };
+		17C590B81D06CF16002EFD46 /* DMShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C590B71D06CF16002EFD46 /* DMShareView.m */; };
 		17D3181F1C9FE0B4003FFA55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17D3181E1C9FE0B4003FFA55 /* Assets.xcassets */; };
 		17D3182D1C9FE0B4003FFA55 /* _____Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D3182C1C9FE0B4003FFA55 /* _____Tests.m */; };
 		17D318381C9FE0B5003FFA55 /* _____UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D318371C9FE0B5003FFA55 /* _____UITests.m */; };
@@ -68,6 +70,10 @@
 		17E648851CA1475A00E0FED4 /* DMRecommendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17E648831CA1475A00E0FED4 /* DMRecommendViewController.xib */; };
 		17E7293C1D000A7C006DC59E /* DMPostWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17E7293B1D000A7C006DC59E /* DMPostWordViewController.m */; };
 		17E7293F1D0017B9006DC59E /* DMPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17E7293E1D0017B9006DC59E /* DMPlaceHolderTextView.m */; };
+		17E729421D002257006DC59E /* DMPlaceHolderLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 17E729411D002257006DC59E /* DMPlaceHolderLabel.m */; };
+		17E729451D002DB2006DC59E /* DMAddTagToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 17E729441D002DB2006DC59E /* DMAddTagToolbar.m */; };
+		17E729471D002DC8006DC59E /* DMAddTagToolbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17E729461D002DC8006DC59E /* DMAddTagToolbar.xib */; };
+		17E7294A1D003B9F006DC59E /* DMAddTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17E729491D003B9F006DC59E /* DMAddTagViewController.m */; };
 		17EB26C71CBE50BE00F7B8F4 /* NSDate+DMExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 17EB26C61CBE50BE00F7B8F4 /* NSDate+DMExtension.m */; };
 		17ED04261CA8C67000EAC7A5 /* DMKeyboardTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 17ED04251CA8C67000EAC7A5 /* DMKeyboardTool.m */; };
 		17ED042A1CA8C72C00EAC7A5 /* DMKeyboardTool.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17ED04291CA8C72C00EAC7A5 /* DMKeyboardTool.xib */; };
@@ -116,6 +122,7 @@
 		17ED50641CA28388008FC030 /* DMRecommendUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17ED50621CA28388008FC030 /* DMRecommendUserCell.m */; };
 		17ED50651CA28388008FC030 /* DMRecommendUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17ED50631CA28388008FC030 /* DMRecommendUserCell.xib */; };
 		17ED50681CA286D7008FC030 /* DMRecommendUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 17ED50671CA286D7008FC030 /* DMRecommendUser.m */; };
+		17F0AFEB1D081B1B0092952A /* DMRecommendUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F0AFEA1D081B1B0092952A /* DMRecommendUserViewController.m */; };
 		17F2A2E21CFBEC9000FA49A2 /* KRVideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F2A2DC1CFBEC9000FA49A2 /* KRVideoPlayerController.m */; };
 		17F2A2E31CFBEC9000FA49A2 /* KRVideoPlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F2A2DE1CFBEC9000FA49A2 /* KRVideoPlayerControlView.m */; };
 		17F2A2E41CFBEC9000FA49A2 /* XFVociePlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F2A2E01CFBEC9000FA49A2 /* XFVociePlayerController.m */; };
@@ -131,6 +138,11 @@
 		17F8D09D1CACBFC600EE35BE /* DMPushGuideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F8D09C1CACBFC600EE35BE /* DMPushGuideView.m */; };
 		17F8D09F1CACBFD800EE35BE /* DMPushGuideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17F8D09E1CACBFD800EE35BE /* DMPushGuideView.xib */; };
 		17F9E7351CC082C500F0189C /* DMTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F9E7341CC082C500F0189C /* DMTopicViewController.m */; };
+		17FA4D771D0518D2004FF801 /* DMLoginTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FA4D761D0518D2004FF801 /* DMLoginTool.m */; };
+		17FA4D7A1D055684004FF801 /* UIColor+DMExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FA4D791D055684004FF801 /* UIColor+DMExtension.m */; };
+		17FB2B191D0128FF006C43D4 /* DMTagButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FB2B181D0128FF006C43D4 /* DMTagButton.m */; };
+		17FB2B1C1D015891006C43D4 /* DMTagTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FB2B1B1D015891006C43D4 /* DMTagTextField.m */; };
+		17FB2B1F1D0191BB006C43D4 /* DMSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FB2B1E1D0191BB006C43D4 /* DMSettingViewController.m */; };
 		17FE9BCE1CFD66E8004EBCCD /* DMTopWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FE9BCD1CFD66E8004EBCCD /* DMTopWindow.m */; };
 		17FEDDCE1CC9BA1C00BBA48E /* DMStatusBarHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FEDDCD1CC9BA1C00BBA48E /* DMStatusBarHUD.m */; };
 		17FEDDD41CC9C9C600BBA48E /* error_os.png in Resources */ = {isa = PBXBuildFile; fileRef = 17FEDDD01CC9C9C600BBA48E /* error_os.png */; };
@@ -197,6 +209,10 @@
 		176279561CBCD740007C83F5 /* DMTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMTopicCell.h; sourceTree = "<group>"; };
 		176279571CBCD740007C83F5 /* DMTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMTopicCell.m; sourceTree = "<group>"; };
 		176279581CBCD740007C83F5 /* DMTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMTopicCell.xib; sourceTree = "<group>"; };
+		17C590B31D069F55002EFD46 /* DMHomeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMHomeButton.h; sourceTree = "<group>"; };
+		17C590B41D069F55002EFD46 /* DMHomeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMHomeButton.m; sourceTree = "<group>"; };
+		17C590B61D06CF16002EFD46 /* DMShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMShareView.h; sourceTree = "<group>"; };
+		17C590B71D06CF16002EFD46 /* DMShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMShareView.m; sourceTree = "<group>"; };
 		17D3180F1C9FE0B4003FFA55 /* 百思不得姐.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "百思不得姐.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17D3181E1C9FE0B4003FFA55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17D318281C9FE0B4003FFA55 /* 百思不得姐Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "百思不得姐Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -290,6 +306,13 @@
 		17E7293B1D000A7C006DC59E /* DMPostWordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMPostWordViewController.m; sourceTree = "<group>"; };
 		17E7293D1D0017B9006DC59E /* DMPlaceHolderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMPlaceHolderTextView.h; sourceTree = "<group>"; };
 		17E7293E1D0017B9006DC59E /* DMPlaceHolderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMPlaceHolderTextView.m; sourceTree = "<group>"; };
+		17E729401D002257006DC59E /* DMPlaceHolderLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMPlaceHolderLabel.h; sourceTree = "<group>"; };
+		17E729411D002257006DC59E /* DMPlaceHolderLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMPlaceHolderLabel.m; sourceTree = "<group>"; };
+		17E729431D002DB2006DC59E /* DMAddTagToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMAddTagToolbar.h; sourceTree = "<group>"; };
+		17E729441D002DB2006DC59E /* DMAddTagToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMAddTagToolbar.m; sourceTree = "<group>"; };
+		17E729461D002DC8006DC59E /* DMAddTagToolbar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMAddTagToolbar.xib; sourceTree = "<group>"; };
+		17E729481D003B9F006DC59E /* DMAddTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMAddTagViewController.h; sourceTree = "<group>"; };
+		17E729491D003B9F006DC59E /* DMAddTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMAddTagViewController.m; sourceTree = "<group>"; };
 		17EB26C51CBE50BE00F7B8F4 /* NSDate+DMExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+DMExtension.h"; sourceTree = "<group>"; };
 		17EB26C61CBE50BE00F7B8F4 /* NSDate+DMExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DMExtension.m"; sourceTree = "<group>"; };
 		17ED04241CA8C67000EAC7A5 /* DMKeyboardTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DMKeyboardTool.h; path = ../DMKeyboardTool.h; sourceTree = "<group>"; };
@@ -383,6 +406,8 @@
 		17ED50631CA28388008FC030 /* DMRecommendUserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMRecommendUserCell.xib; sourceTree = "<group>"; };
 		17ED50661CA286D7008FC030 /* DMRecommendUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMRecommendUser.h; sourceTree = "<group>"; };
 		17ED50671CA286D7008FC030 /* DMRecommendUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMRecommendUser.m; sourceTree = "<group>"; };
+		17F0AFE91D081B1B0092952A /* DMRecommendUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMRecommendUserViewController.h; sourceTree = "<group>"; };
+		17F0AFEA1D081B1B0092952A /* DMRecommendUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMRecommendUserViewController.m; sourceTree = "<group>"; };
 		17F2A2DB1CFBEC9000FA49A2 /* KRVideoPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRVideoPlayerController.h; sourceTree = "<group>"; };
 		17F2A2DC1CFBEC9000FA49A2 /* KRVideoPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRVideoPlayerController.m; sourceTree = "<group>"; };
 		17F2A2DD1CFBEC9000FA49A2 /* KRVideoPlayerControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRVideoPlayerControlView.h; sourceTree = "<group>"; };
@@ -406,6 +431,16 @@
 		17F8D09E1CACBFD800EE35BE /* DMPushGuideView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMPushGuideView.xib; sourceTree = "<group>"; };
 		17F9E7331CC082C500F0189C /* DMTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMTopicViewController.h; sourceTree = "<group>"; };
 		17F9E7341CC082C500F0189C /* DMTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMTopicViewController.m; sourceTree = "<group>"; };
+		17FA4D751D0518D2004FF801 /* DMLoginTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMLoginTool.h; sourceTree = "<group>"; };
+		17FA4D761D0518D2004FF801 /* DMLoginTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMLoginTool.m; sourceTree = "<group>"; };
+		17FA4D781D055684004FF801 /* UIColor+DMExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+DMExtension.h"; sourceTree = "<group>"; };
+		17FA4D791D055684004FF801 /* UIColor+DMExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+DMExtension.m"; sourceTree = "<group>"; };
+		17FB2B171D0128FF006C43D4 /* DMTagButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMTagButton.h; sourceTree = "<group>"; };
+		17FB2B181D0128FF006C43D4 /* DMTagButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMTagButton.m; sourceTree = "<group>"; };
+		17FB2B1A1D015891006C43D4 /* DMTagTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMTagTextField.h; sourceTree = "<group>"; };
+		17FB2B1B1D015891006C43D4 /* DMTagTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMTagTextField.m; sourceTree = "<group>"; };
+		17FB2B1D1D0191BB006C43D4 /* DMSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMSettingViewController.h; sourceTree = "<group>"; };
+		17FB2B1E1D0191BB006C43D4 /* DMSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMSettingViewController.m; sourceTree = "<group>"; };
 		17FE9BCC1CFD66E8004EBCCD /* DMTopWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMTopWindow.h; sourceTree = "<group>"; };
 		17FE9BCD1CFD66E8004EBCCD /* DMTopWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMTopWindow.m; sourceTree = "<group>"; };
 		17FEDDCC1CC9BA1C00BBA48E /* DMStatusBarHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMStatusBarHUD.h; sourceTree = "<group>"; };
@@ -627,6 +662,8 @@
 				17F2A2EC1CFC2E9500FA49A2 /* DMCommentCell.h */,
 				17F2A2ED1CFC2E9500FA49A2 /* DMCommentCell.m */,
 				17F2A2EE1CFC2E9500FA49A2 /* DMCommentCell.xib */,
+				17C590B31D069F55002EFD46 /* DMHomeButton.h */,
+				17C590B41D069F55002EFD46 /* DMHomeButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -654,6 +691,8 @@
 				17ED042B1CA8D38A00EAC7A5 /* DMLoginRegisterController.h */,
 				17ED042C1CA8D38A00EAC7A5 /* DMLoginRegisterController.m */,
 				17ED042D1CA8D38A00EAC7A5 /* DMLoginRegisterController.xib */,
+				17F0AFE91D081B1B0092952A /* DMRecommendUserViewController.h */,
+				17F0AFEA1D081B1B0092952A /* DMRecommendUserViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -712,6 +751,8 @@
 				17FFBF181CFEDF790002DF6F /* DMWebViewController.h */,
 				17FFBF191CFEDF790002DF6F /* DMWebViewController.m */,
 				17FFBF1A1CFEDF790002DF6F /* DMWebViewController.xib */,
+				17FB2B1D1D0191BB006C43D4 /* DMSettingViewController.h */,
+				17FB2B1E1D0191BB006C43D4 /* DMSettingViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -817,6 +858,8 @@
 				17FFBF021CFE7D480002DF6F /* UIImage+DMExtension.m */,
 				17FFBF041CFE81140002DF6F /* UIImageView+DMExtension.h */,
 				17FFBF051CFE81140002DF6F /* UIImageView+DMExtension.m */,
+				17FA4D781D055684004FF801 /* UIColor+DMExtension.h */,
+				17FA4D791D055684004FF801 /* UIColor+DMExtension.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -848,6 +891,10 @@
 				17F8D09E1CACBFD800EE35BE /* DMPushGuideView.xib */,
 				17FE9BCC1CFD66E8004EBCCD /* DMTopWindow.h */,
 				17FE9BCD1CFD66E8004EBCCD /* DMTopWindow.m */,
+				17FA4D751D0518D2004FF801 /* DMLoginTool.h */,
+				17FA4D761D0518D2004FF801 /* DMLoginTool.m */,
+				17C590B61D06CF16002EFD46 /* DMShareView.h */,
+				17C590B71D06CF16002EFD46 /* DMShareView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -962,6 +1009,8 @@
 				170827B81CC7715200392E3E /* DMPublishViewController.xib */,
 				17E7293A1D000A7C006DC59E /* DMPostWordViewController.h */,
 				17E7293B1D000A7C006DC59E /* DMPostWordViewController.m */,
+				17E729481D003B9F006DC59E /* DMAddTagViewController.h */,
+				17E729491D003B9F006DC59E /* DMAddTagViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -985,6 +1034,15 @@
 			children = (
 				17E7293D1D0017B9006DC59E /* DMPlaceHolderTextView.h */,
 				17E7293E1D0017B9006DC59E /* DMPlaceHolderTextView.m */,
+				17E729401D002257006DC59E /* DMPlaceHolderLabel.h */,
+				17E729411D002257006DC59E /* DMPlaceHolderLabel.m */,
+				17E729431D002DB2006DC59E /* DMAddTagToolbar.h */,
+				17E729441D002DB2006DC59E /* DMAddTagToolbar.m */,
+				17E729461D002DC8006DC59E /* DMAddTagToolbar.xib */,
+				17FB2B171D0128FF006C43D4 /* DMTagButton.h */,
+				17FB2B181D0128FF006C43D4 /* DMTagButton.m */,
+				17FB2B1A1D015891006C43D4 /* DMTagTextField.h */,
+				17FB2B1B1D015891006C43D4 /* DMTagTextField.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1288,6 +1346,7 @@
 				1762795A1CBCD740007C83F5 /* DMTopicCell.xib in Resources */,
 				17FEDDD71CC9C9C600BBA48E /* success.png in Resources */,
 				17E647D31CA13FE100E0FED4 /* DMFriendTrendsViewController.xib in Resources */,
+				17E729471D002DC8006DC59E /* DMAddTagToolbar.xib in Resources */,
 				17ED505D1CA249E2008FC030 /* DMRecommendCategroyCell.xib in Resources */,
 				17D3181F1C9FE0B4003FFA55 /* Assets.xcassets in Resources */,
 				17ED042A1CA8C72C00EAC7A5 /* DMKeyboardTool.xib in Resources */,
@@ -1388,19 +1447,24 @@
 				176279591CBCD740007C83F5 /* DMTopicCell.m in Sources */,
 				17FFBF061CFE81140002DF6F /* UIImageView+DMExtension.m in Sources */,
 				17E6486F1CA146E600E0FED4 /* MBProgressHUD+Add.m in Sources */,
+				17E729421D002257006DC59E /* DMPlaceHolderLabel.m in Sources */,
 				17ED503F1CA2497E008FC030 /* MJRefreshHeader.m in Sources */,
 				17ED50391CA2497E008FC030 /* MJChiBaoZiFooter2.m in Sources */,
 				17ED50641CA28388008FC030 /* DMRecommendUserCell.m in Sources */,
 				17ED04261CA8C67000EAC7A5 /* DMKeyboardTool.m in Sources */,
+				17C590B81D06CF16002EFD46 /* DMShareView.m in Sources */,
 				17F9E7351CC082C500F0189C /* DMTopicViewController.m in Sources */,
+				17FA4D7A1D055684004FF801 /* UIColor+DMExtension.m in Sources */,
 				17ED50431CA2497E008FC030 /* MJRefreshBackGifFooter.m in Sources */,
 				17F8D09D1CACBFC600EE35BE /* DMPushGuideView.m in Sources */,
 				17E647531CA120B600E0FED4 /* main.m in Sources */,
 				17ED504F1CA2497E008FC030 /* MJExtensionConst.m in Sources */,
+				17FB2B1C1D015891006C43D4 /* DMTagTextField.m in Sources */,
 				17FEDDE21CCA054700BBA48E /* DMTopicVideoView.m in Sources */,
 				17ED503D1CA2497E008FC030 /* MJRefreshComponent.m in Sources */,
 				17ED50401CA2497E008FC030 /* MJRefreshAutoGifFooter.m in Sources */,
 				17ED50421CA2497E008FC030 /* MJRefreshAutoStateFooter.m in Sources */,
+				17FA4D771D0518D2004FF801 /* DMLoginTool.m in Sources */,
 				17FFBF0C1CFECE400002DF6F /* DMMeFooterView.m in Sources */,
 				17ED50381CA2497E008FC030 /* MJChiBaoZiFooter.m in Sources */,
 				17ED50531CA2497E008FC030 /* MJPropertyType.m in Sources */,
@@ -1412,6 +1476,7 @@
 				17FFBF031CFE7D480002DF6F /* UIImage+DMExtension.m in Sources */,
 				17E647511CA120B600E0FED4 /* UIView+DMExtension.m in Sources */,
 				17E6487A1CA146E600E0FED4 /* UIButton+WebCache.m in Sources */,
+				17C590B51D069F55002EFD46 /* DMHomeButton.m in Sources */,
 				17E647D11CA1310400E0FED4 /* DMNavigationController.m in Sources */,
 				170827B91CC7715200392E3E /* DMPublishViewController.m in Sources */,
 				17ED50441CA2497E008FC030 /* MJRefreshBackNormalFooter.m in Sources */,
@@ -1431,6 +1496,7 @@
 				17E648681CA146E600E0FED4 /* AFHTTPSessionManager.m in Sources */,
 				1700A0131CC4CFA300FED360 /* DMShowPictureController.m in Sources */,
 				17ED50561CA2497E008FC030 /* NSObject+MJKeyValue.m in Sources */,
+				17E729451D002DB2006DC59E /* DMAddTagToolbar.m in Sources */,
 				17ED04321CA8DE3000EAC7A5 /* DMVerticalButton.m in Sources */,
 				17E6487F1CA146E600E0FED4 /* UIImageView+WebCache.m in Sources */,
 				17E647321CA11EC700E0FED4 /* DMMeViewController.m in Sources */,
@@ -1449,11 +1515,13 @@
 				17FFBF091CFEC8980002DF6F /* DMMeCell.m in Sources */,
 				17E648761CA146E600E0FED4 /* SDWebImageDownloader.m in Sources */,
 				17E648841CA1475A00E0FED4 /* DMRecommendViewController.m in Sources */,
+				17F0AFEB1D081B1B0092952A /* DMRecommendUserViewController.m in Sources */,
 				17E6474F1CA120B600E0FED4 /* AppDelegate.m in Sources */,
 				17FEDDDF1CC9F76600BBA48E /* DMTopicVoiceView.m in Sources */,
 				17E6486D1CA146E600E0FED4 /* AFURLResponseSerialization.m in Sources */,
 				174FE0471CA53CDA003AEA36 /* DMRecommendTagsViewController.m in Sources */,
 				17ED504D1CA2497E008FC030 /* UIView+MJExtension.m in Sources */,
+				17FB2B1F1D0191BB006C43D4 /* DMSettingViewController.m in Sources */,
 				17ED50601CA24BB7008FC030 /* ESToast.m in Sources */,
 				17FFBF121CFED6AF0002DF6F /* DMSquareButton.m in Sources */,
 				17E6487E1CA146E600E0FED4 /* UIImageView+HighlightedWebCache.m in Sources */,
@@ -1471,6 +1539,7 @@
 				17F2A2EF1CFC2E9500FA49A2 /* DMCommentCell.m in Sources */,
 				17ED4FEB1CA247C3008FC030 /* DMRecommendCategory.m in Sources */,
 				17E7293F1D0017B9006DC59E /* DMPlaceHolderTextView.m in Sources */,
+				17E7294A1D003B9F006DC59E /* DMAddTagViewController.m in Sources */,
 				17E648701CA146E600E0FED4 /* MBProgressHUD.m in Sources */,
 				17E648801CA146E600E0FED4 /* UIView+WebCacheOperation.m in Sources */,
 				17ED50571CA2497E008FC030 /* NSObject+MJProperty.m in Sources */,
@@ -1480,6 +1549,7 @@
 				17E647501CA120B600E0FED4 /* UIBarButtonItem+DMExtension.m in Sources */,
 				17ED50521CA2497E008FC030 /* MJPropertyKey.m in Sources */,
 				17FEDDEA1CCA17B400BBA48E /* DMComment.m in Sources */,
+				17FB2B191D0128FF006C43D4 /* DMTagButton.m in Sources */,
 				17E6486A1CA146E600E0FED4 /* AFSecurityPolicy.m in Sources */,
 				17E648791CA146E600E0FED4 /* SDWebImagePrefetcher.m in Sources */,
 				17E6472F1CA11EC700E0FED4 /* DMFriendTrendsViewController.m in Sources */,

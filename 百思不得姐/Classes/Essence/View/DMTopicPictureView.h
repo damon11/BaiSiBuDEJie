@@ -12,5 +12,5 @@
 //帖子数据
 @property (nonatomic, strong) DMTopics *topic;
 
-+(instancetype)pictureView;
+
 @end

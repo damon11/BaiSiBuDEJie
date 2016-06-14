@@ -60,23 +60,27 @@
         _cellHeight = DMTopicCellTextY + textH + DMTopicCellMargin;
         //根据段子的类型来计算高度
         if(self.type == DMTopicTypePicture){//图片帖子
-            //图片显示出来的宽度
-            CGFloat pictureW = maxSize.width+20;
-            //显示出来的高度
-            CGFloat pictureH = pictureW *self.height / self.width;
             
-            
-            if(pictureH >= DMTopicPictureMaxH){
-                pictureH = DMTopicPictureBreakH;
-                self.bigPicture = YES;
+            if(self.width != 0 && self.height != 0){
+                //图片显示出来的宽度
+                CGFloat pictureW = maxSize.width+20;
+                //显示出来的高度
+                CGFloat pictureH = pictureW *self.height / self.width;
+                
+                
+                if(pictureH >= DMTopicPictureMaxH){
+                    pictureH = DMTopicPictureBreakH;
+                    self.bigPicture = YES;
+                }
+                
+                //计算图片控件的frame
+                CGFloat pictureX = DMTopicCellMargin;
+                CGFloat pictureY = DMTopicCellTextY + textH + DMTopicCellMargin;
+                _pictureViewFrame = CGRectMake(pictureX , pictureY, pictureW, pictureH);
+                
+                _cellHeight += pictureH + DMTopicCellMargin;
             }
             
-            //计算图片控件的frame
-            CGFloat pictureX = DMTopicCellMargin;
-            CGFloat pictureY = DMTopicCellTextY + textH + DMTopicCellMargin;
-            _pictureViewFrame = CGRectMake(pictureX , pictureY, pictureW, pictureH);
-            
-            _cellHeight += pictureH + DMTopicCellMargin;
         }else if (self.type == DMTopicTypeVoice){//声音帖子
             CGFloat voiceX = DMTopicCellMargin;
             CGFloat voiceY = DMTopicCellTextY + textH + DMTopicCellMargin;

@@ -42,3 +42,9 @@ UIKIT_EXTERN NSString *  const DMTabBarDidSelectNotification;
 UIKIT_EXTERN NSString *  const DMSelectedControllerIndexKey;
 /** tabBar被点击的控制器 key*/
 UIKIT_EXTERN NSString *  const DMSelectedControllerKey;
+
+//标签-间距
+UIKIT_EXTERN CGFloat const DMTagMargin;
+
+//标签-高度
+UIKIT_EXTERN CGFloat const DMTagH;

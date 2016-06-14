@@ -11,6 +11,7 @@
 #import <pop.h>
 #import "DMPostWordViewController.h"
 #import "DMNavigationController.h"
+#import "DMLoginTool.h"
 static CGFloat const DMAnimationDelay = 0.1;
 static CGFloat const DMSpringFactor = 10;
 @interface DMPublishViewController ()
@@ -68,10 +69,14 @@ static CGFloat const DMSpringFactor = 10;
     //添加标语
     UIImageView *sloganView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"app_slogan"]];
     [self.view addSubview:sloganView];
+    
+    //标语动画
     POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
     CGFloat centerX = DMSCREENWIDTH * 0.5;
     CGFloat centerEndY = DMSCREENHEIGTH * 0.2;
     CGFloat centerBeginY = centerEndY - DMSCREENHEIGTH;
+    sloganView.centerY = centerBeginY;
+    sloganView.centerX = centerX;
     anim.fromValue = [NSValue valueWithCGPoint:CGPointMake(centerX, centerBeginY)];
     anim.toValue = [NSValue valueWithCGPoint:CGPointMake(centerX, centerEndY)];
     anim.beginTime = CACurrentMediaTime() + images.count * DMAnimationDelay;
@@ -127,6 +132,7 @@ static CGFloat const DMSpringFactor = 10;
         }else if (button.tag == 1){
             DXLog(@"发图片");
         }else if (button.tag == 2){
+//            if([DMLoginTool getUid] == nil) return;
             DMPostWordViewController *postWord = [[DMPostWordViewController alloc] init];
             postWord.view.backgroundColor = [UIColor clearColor];
             DMNavigationController *nav = [[DMNavigationController alloc]initWithRootViewController:postWord];

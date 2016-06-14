@@ -1,0 +1,44 @@
+//
+//  PrefixHeader.pch
+//  百思不得姐
+//
+//  Created by JD_Mac on 16/3/22.
+//  Copyright © 2016年 Damon. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "UIView+DMExtension.h"
+#import "UIBarButtonItem+DMExtension.h"
+#import "DMConst.h"
+#import "NSDate+DMExtension.h"
+#import "UIImage+DMExtension.h"
+#import "UIImageView+DMExtension.h"
+#import "UIViewController+HUD.h"
+#ifdef  DEBUG
+#define DXLog(...) NSLog(__VA_ARGS__)
+#else
+#define DXLog(...)
+#endif
+
+#define DXLogFunc NSLog(@"%s",__func__)
+
+#define DXRGBColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0  blue:(b)/255.0  alpha:1.0]
+#define DXGlobalBg DXRGBColor(223, 223, 223)
+#define DMTagBg DXRGBColor(74, 139, 209)
+#define kAppWindow [UIApplication sharedApplication].keyWindow
+
+#define WEAK_SELF __weak typeof(self)weakSelf = self
+#define STRONG_SELF __strong typeof(weakSelf)self = weakSelf
+
+#define DMSCREENWIDTH [UIScreen mainScreen].bounds.size.width
+#define DMSCREENHEIGTH [UIScreen mainScreen].bounds.size.height
+
+#define DMTagFont [UIFont systemFontOfSize:14];
+#define DMNotificationCenter [NSNotificationCenter defaultCenter]
+
+/*指示器和titleView内Button宽度*/
+#define INDICATORWIDTH self.titlesView.width/self.childViewControllers.count
+
+#endif /* PrefixHeader_pch */

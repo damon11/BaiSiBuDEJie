@@ -7,7 +7,12 @@
 //
 
 #import "DMRecommendUser.h"
-
+#import "MJExtension.h"
 @implementation DMRecommendUser
 
++(NSDictionary *)mj_replacedKeyFromPropertyName{
+    return @{
+             @"ID":@"id"
+             };
+}
 @end

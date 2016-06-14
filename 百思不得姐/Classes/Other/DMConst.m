@@ -37,3 +37,8 @@ NSString *  const DMTabBarDidSelectNotification = @"DMTabBarDidSelectNotificatio
 NSString *  const DMSelectedControllerIndexKey = @"DMSelectedControllerIndexKey";
 /** tabBar被点击的控制器 key*/
 NSString *  const DMSelectedControllerKey = @"DMSelectedControllerKey";
+
+//标签-间距
+CGFloat const DMTagMargin = 5;
+//标签-高度
+CGFloat const DMTagH = 25;

@@ -16,6 +16,10 @@
 #import "DMRecommendTagCell.h"
 @interface DMRecommendTagsViewController ()
 @property(nonatomic,strong) NSArray *tags;
+/*当前页码*/
+@property(nonatomic, assign) NSInteger page;
+/** 上一次请求参数 */
+@property(nonatomic,strong) NSDictionary *params;
 @end
 
 static NSString *DMTagId = @"tag";
@@ -27,7 +31,7 @@ static NSString *DMTagId = @"tag";
     
     [self setupTableView];
   
-    [self loadTags];
+    [self setupRefresh];
 }
 
 -(void)setupTableView
@@ -39,22 +43,79 @@ static NSString *DMTagId = @"tag";
     self.tableView.backgroundColor = DXGlobalBg;
 }
 
--(void)loadTags
+
+-(void)setupRefresh{
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewTags)];
+    //自动改变透明度
+    self.tableView.mj_header.automaticallyChangeAlpha = YES;
+    [self.tableView.mj_header beginRefreshing];
+    
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreTags)];
+}
+
+-(void)loadNewTags
 {
+    
+    //结束上拉刷新
+    [self.tableView.mj_footer endRefreshing];
+    //当前页码
+    self.page = 0;
     //发送请求
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"a"] = @"tag_recommend";
     params[@"action"] = @"sub";
     params[@"c"] = @"topic";
+    self.params = params;
     [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
+        if(self.params != params) return ;
         self.tags = [DMRecommendTag mj_objectArrayWithKeyValuesArray:responseObject];
         [self.tableView reloadData];
+        //结束刷新
+        [self.tableView.mj_header endRefreshing];
+
     } failure:^(NSURLSessionDataTask *  task, NSError *  error) {
-        [self showHint:@"加载标签数据失败"];
+        if(self.params != params) return ;
+        //结束刷新
+        [self.tableView.mj_header endRefreshing];
+        //恢复页码
+        self.page--;
     }];
 }
+
+-(void)loadMoreTags{
+    
+    //结束上拉刷新
+    [self.tableView.mj_header endRefreshing];
+    //当前页码
+    self.page++;
+    //发送请求
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"a"] = @"tag_recommend";
+    params[@"action"] = @"sub";
+    params[@"c"] = @"topic";
+    params[@"page"] = @(self.page);
+    self.params = params;
+    [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        if(self.params != params) return ;
+        self.tags = [DMRecommendTag mj_objectArrayWithKeyValuesArray:responseObject];
+        [self.tableView reloadData];
+        //结束刷新
+        [self.tableView.mj_footer endRefreshing];
+    } failure:^(NSURLSessionDataTask *  task, NSError *  error) {
+        if(self.params != params) return ;
+        //结束刷新
+        [self.tableView.mj_footer endRefreshing];
+        //恢复页码
+        self.page--;
+    }];
+
+}
+
+
 #pragma mark - Table view data source
 
 

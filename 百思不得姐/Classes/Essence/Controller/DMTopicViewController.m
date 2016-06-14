@@ -16,7 +16,7 @@
 #import "DMConmentViewController.h"
 #import "DMNewViewController.h"
 #import "KRVideoPlayerController.h"
-
+#import "DMRecommendUserViewController.h"
 static NSString *const DMTopicCellId = @"topic";
 
 @interface DMTopicViewController ()
@@ -34,6 +34,8 @@ static NSString *const DMTopicCellId = @"topic";
 @property(nonatomic,strong) NSDictionary *params;
 /**上一次选中的索引（或者控制器）*/
 @property(nonatomic, assign) NSInteger lastselectedIndex;
+
+@property (nonatomic, assign) DMTopicType cellType;
 @end
 
 @implementation DMTopicViewController
@@ -57,7 +59,14 @@ static NSString *const DMTopicCellId = @"topic";
     
 }
 
-
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    if(self.cellType == DMTopicTypeVideo){
+        [DMNotificationCenter postNotificationName:@"videoPause" object:nil];
+    }else if (self.cellType == DMTopicTypeVoice){
+        [DMNotificationCenter postNotificationName:@"voicePause" object:nil];
+    }
+}
 
 -(void)setupTableView{
     //设置内边距
@@ -127,7 +136,7 @@ static NSString *const DMTopicCellId = @"topic";
         //下拉刷新 直接覆盖就行
         self.topics = [DMTopics mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
         
-        DXLog(@"%@",self.topics);
+//        DXLog(@"%@",self.topics);
         //刷新表格
         [self.tableView reloadData];
         
@@ -212,7 +221,17 @@ static NSString *const DMTopicCellId = @"topic";
     
     DMTopics *topic = self.topics[indexPath.row];
     cell.topic = topic;
-    
+    WEAK_SELF;
+    [cell setHeaderBlock:^{
+        DMRecommendUserViewController *reuserVc = [[DMRecommendUserViewController alloc] init];
+        [weakSelf.navigationController pushViewController:reuserVc animated:YES];
+    }];
+    [cell setCommentBtnBlock:^{
+        DMConmentViewController *commentVc = [[DMConmentViewController alloc] init];
+        commentVc.topic = self.topics[indexPath.row];
+        self.cellType = commentVc.topic.type;
+        [weakSelf.navigationController pushViewController:commentVc animated:YES];
+    }];
     cell.selectionStyle = UITableViewCellAccessoryNone;
     return cell;
 }
@@ -230,6 +249,7 @@ static NSString *const DMTopicCellId = @"topic";
     
     DMConmentViewController *cmtVc = [[DMConmentViewController alloc]init];
     cmtVc.topic = self.topics[indexPath.row];
+    self.cellType = cmtVc.topic.type;
     [self.navigationController pushViewController:cmtVc animated:YES];
 }
 -(void)dealloc{

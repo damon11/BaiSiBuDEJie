@@ -32,4 +32,11 @@
     
     return image;
 }
+
+//换肤思路
++(UIImage *)imageWithName:(NSString *)name{
+    NSString *dir = [[NSUserDefaults standardUserDefaults] stringForKey:@"SkinDirName"];
+    NSString *path = [NSString stringWithFormat:@"Skins/%@/%@",dir,name];
+    return [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:path ofType:nil]];
+}
 @end

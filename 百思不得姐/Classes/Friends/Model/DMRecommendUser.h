@@ -21,4 +21,33 @@
  *  昵称
  */
 @property (nonatomic, copy) NSString *screen_name;
+/**
+ *  是否关注
+ */
+@property (nonatomic, assign) BOOL is_follow;
+/**
+ *  用户id
+ */
+@property (nonatomic, assign) NSInteger ID;
+/**
+ *  推荐的用户id
+ */
+@property (nonatomic, assign) NSInteger uid;
+/**
+ *  性别
+ */
+@property (nonatomic, copy) NSString *gender;
+/**
+ *  个性描述
+ */
+@property (nonatomic, copy) NSString *introduction;
+/**
+ *  帖子总数
+ */
+@property (nonatomic, assign) NSInteger tiezi_count;
+/**
+ *  是否vip
+ */
+@property (nonatomic, assign) BOOL is_vip;
+
 @end

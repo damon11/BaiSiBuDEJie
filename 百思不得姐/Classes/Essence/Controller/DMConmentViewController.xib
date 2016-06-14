@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="bottomSpace" destination="2qe-lR-10b" id="0RO-4q-fO4"/>
                 <outlet property="tableView" destination="rEt-lY-KJG" id="5ew-kL-JDJ"/>
+                <outlet property="textfield" destination="OnJ-DF-8nx" id="Npo-1O-BmH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

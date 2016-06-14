@@ -17,8 +17,8 @@ static NSString *const DMPlaceholderColorKeyPath = @"_placeholderLabel.textColor
 //                                                       NSFontAttributeName: self.font}];
 //}
 + (void)initialize{
-//    [self getIvar];
-    [self getProperties];
+    [self getIvar];
+//    [self getProperties];
 }
 /**
  *运行时
@@ -26,7 +26,7 @@ static NSString *const DMPlaceholderColorKeyPath = @"_placeholderLabel.textColor
 +(void)getProperties{
     unsigned int count = 0;
     
-    objc_property_t *preperties = class_copyPropertyList([UIButton class], &count);
+    objc_property_t *preperties = class_copyPropertyList([UITextField class], &count);
     
     for(int i = 0; i < count; i++){
         //取出属性

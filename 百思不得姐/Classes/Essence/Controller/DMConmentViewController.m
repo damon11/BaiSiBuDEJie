@@ -15,11 +15,12 @@
 #import "DMUser.h"
 #import "MJExtension.h"
 #import "DMCommentCell.h"
-
+#import "DMShareView.h"
 static NSString * const DMCommentId = @"comment";
 
 static NSInteger const DMHeaderLabelTag = 99;
 @interface DMConmentViewController ()<UITableViewDelegate,UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITextField *textfield;
 //底部工具条间距
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSpace;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -37,6 +38,9 @@ static NSInteger const DMHeaderLabelTag = 99;
 @property(nonatomic,strong) AFHTTPSessionManager *manager;
 /** 选中的行号 */
 @property(nonatomic,strong) NSIndexPath *selected;
+
+/** 分享视图 */
+@property(nonatomic,strong) DMShareView *shareViewc;
 @end
 
 @implementation DMConmentViewController
@@ -48,6 +52,18 @@ static NSInteger const DMHeaderLabelTag = 99;
     }
     return _manager;
 }
+
+
+-(DMShareView *)shareViewc{
+    if(!_shareViewc){
+        _shareViewc = [[DMShareView alloc] init];
+        _shareViewc.backgroundColor = [UIColor whiteColor];
+        _shareViewc.hidden = YES;
+        _shareViewc.userInteractionEnabled = YES;
+    }
+    return _shareViewc;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -58,6 +74,16 @@ static NSInteger const DMHeaderLabelTag = 99;
     [self setupRefresh];
 }
 
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    if(self.topic.type == DMTopicTypeVideo){
+        [DMNotificationCenter postNotificationName:@"videoReset" object:nil];
+    }else if(self.topic.type == DMTopicTypeVoice){
+        [DMNotificationCenter postNotificationName:@"voiceReset" object:nil];
+    }
+    
+    
+}
 -(void)setupRefresh{
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewComment)];
     
@@ -99,6 +125,9 @@ static NSInteger const DMHeaderLabelTag = 99;
         [self.tableView reloadData];
         //结束刷新状态
         [self.tableView.mj_header endRefreshing];
+        
+        NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        [self.tableView scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
         
         //控制footer的状态
         NSInteger total = [responseObject[@"total"] integerValue];
@@ -143,6 +172,7 @@ static NSInteger const DMHeaderLabelTag = 99;
         //刷新页面
         [self.tableView reloadData];
         
+       
         
         //控制footer的状态
         NSInteger total = [responseObject[@"total"] integerValue];
@@ -170,7 +200,7 @@ static NSInteger const DMHeaderLabelTag = 99;
     }
     
     //添加cell
-    DMTopicCell *cell = [DMTopicCell cell];
+    DMTopicCell *cell = [DMTopicCell viewFromXib];
     cell.topic = self.topic;
     cell.size = CGSizeMake(DMSCREENWIDTH, self.topic.cellHeight);
     [header addSubview:cell];
@@ -183,7 +213,7 @@ static NSInteger const DMHeaderLabelTag = 99;
 -(void)setupBasic{
     
     self.title = @"评论";
-    self.navigationItem .rightBarButtonItem = [UIBarButtonItem itemWithImage:@"comment_nav_item_share_icon" highImage:@"comment_nav_item_share_icon_click" target:self action:nil];
+    self.navigationItem .rightBarButtonItem = [UIBarButtonItem itemWithImage:@"comment_nav_item_share_icon" highImage:@"comment_nav_item_share_icon_click" target:self action:@selector(shareView)];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
     
@@ -217,7 +247,7 @@ static NSInteger const DMHeaderLabelTag = 99;
 
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    
+    [DMNotificationCenter postNotificationName:@"removeShareView" object:nil];
     //恢复帖子的top_cmt
     if(self.saved_top_cmt){
         self.topic.top_cmt = self.saved_top_cmt;
@@ -243,7 +273,10 @@ static NSInteger const DMHeaderLabelTag = 99;
 
     [self.view endEditing:YES];
     
-    }
+    [DMNotificationCenter postNotificationName:@"removeShareView" object:nil];
+    
+}
+
 
 #pragma mark -<UITableViewDataSource>
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -309,6 +342,11 @@ static NSInteger const DMHeaderLabelTag = 99;
    
     return header;
 }
+
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(nonnull UIView *)view forSection:(NSInteger)section {
+    view.tintColor = DXGlobalBg;
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     DMCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:DMCommentId];
     
@@ -344,13 +382,50 @@ static NSInteger const DMHeaderLabelTag = 99;
     
 }
 
+-(void)shareView{
+    
+    if(self.shareViewc.isHidden){
+       
+        DMShareView *shareView = [[DMShareView alloc] init];
+        self.shareViewc = shareView;
+        [self.shareViewc setHidden:NO];
+        [[UIApplication sharedApplication].keyWindow.rootViewController.view addSubview:self.shareViewc];
+        self.tableView.userInteractionEnabled = NO;
+    }else{
+        self.tableView.userInteractionEnabled = YES;
+        [DMNotificationCenter postNotificationName:@"removeShareView" object:nil];
+    }
+}
+
 -(void)ding:(UIMenuController *)menu{
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     DXLog(@"顶 %@",[self commentInIndexPath:indexPath].content);
+    
 }
 -(void)replay:(UIMenuController *)menu{
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    DXLog(@"回复 %@",[self commentInIndexPath:indexPath].content);
+    DXLog(@"回复 %@ %ld,",[self commentInIndexPath:indexPath].content,indexPath.section);
+    
+    [self.textfield becomeFirstResponder];
+    
+    if(self.hotComments.count && !self.latestComments.count){
+        DMComment *hotComment = self.hotComments[indexPath.row];
+        self.textfield.placeholder = [NSString stringWithFormat:@"回复:%@", hotComment.user.username];
+    }else if(self.latestComments.count && !self.hotComments.count){
+        DMComment *latestComment = self.latestComments[indexPath.row];
+        self.textfield.placeholder = [NSString stringWithFormat:@"回复:%@", latestComment.user.username];
+    }else if (self.hotComments.count && self.latestComments.count){
+        if(indexPath.section == 0){
+            DMComment *hotComment = self.hotComments[indexPath.row];
+            
+            self.textfield.placeholder = [NSString stringWithFormat:@"回复:%@", hotComment.user.username];
+        }else{
+            DMComment *latestComment = self.latestComments[indexPath.row];
+            self.textfield.placeholder = [NSString stringWithFormat:@"回复:%@",latestComment.user.username];
+        }
+        
+    }
+    
 }
 -(void)report:(UIMenuController *)menu{
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
@@ -361,4 +436,5 @@ static NSInteger const DMHeaderLabelTag = 99;
 //    UIPasteboard *paste = [UIPasteboard generalPasteboard];
 //    paste.string = [self commentInIndexPath:indexPath].content;
 //}
+
 @end

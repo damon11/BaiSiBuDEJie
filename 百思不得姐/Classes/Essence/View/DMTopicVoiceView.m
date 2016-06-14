@@ -20,9 +20,7 @@
 @end
 @implementation DMTopicVoiceView
 
-+(instancetype)voiceView{
-    return [[NSBundle mainBundle]loadNibNamed:NSStringFromClass(self) owner:nil options:nil].lastObject;
-}
+
 
 -(void)awakeFromNib{
     self.autoresizingMask = UIViewAutoresizingNone;
@@ -30,6 +28,9 @@
     //给图片添加监听
     self.imageView.userInteractionEnabled = YES;
     [self.imageView addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showPicture)]];
+    [DMNotificationCenter addObserver:self selector:@selector(voicePause) name:@"voicePause" object:nil];
+    
+    [DMNotificationCenter addObserver:self selector:@selector(reset) name:@"voiceReset" object:nil];
 }
 -(IBAction)showPicture{
     DMShowPictureController *showPicture = [[DMShowPictureController alloc]init];
@@ -74,5 +75,12 @@
     [self.voicePlayer.view removeFromSuperview];
     self.voicePlayer = nil;
     self.playBtn.hidden = NO;
+}
+
+-(void)voicePause{
+    [self.voicePlayer pause];
+}
+-(void)dealloc{
+    [DMNotificationCenter removeObserver:self];
 }
 @end

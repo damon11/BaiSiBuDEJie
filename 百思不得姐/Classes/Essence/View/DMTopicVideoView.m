@@ -19,9 +19,6 @@
 @end
 @implementation DMTopicVideoView
 
-+(instancetype)videoView{
-    return [[NSBundle mainBundle]loadNibNamed:NSStringFromClass(self) owner:nil options:nil].lastObject;
-}
 
 -(void)awakeFromNib{
     self.autoresizingMask = UIViewAutoresizingNone;
@@ -29,6 +26,9 @@
     //给图片添加监听
     self.imageView.userInteractionEnabled = YES;
     [self.imageView addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showPicture)]];
+    [DMNotificationCenter addObserver:self selector:@selector(pause) name:@"videoPause" object:nil];
+   
+    [DMNotificationCenter addObserver:self selector:@selector(reset) name:@"videoReset" object:nil];
 }
 -(IBAction)showPicture{
 
@@ -60,6 +60,10 @@
     self.videoController = nil;
 }
 
+-(void)pause{
+    
+    [self.videoController pause];
+}
 
 
 -(void)setTopic:(DMTopics *)topic{
@@ -80,6 +84,10 @@
     self.videoTimeLabel.text = [NSString stringWithFormat:@"%02zd:%02zd",minute,second];
     self.videoTimeLabel.layer.cornerRadius = 5.0f;
     self.videoTimeLabel.layer.masksToBounds = YES;
+}
+
+-(void)dealloc{
+    [DMNotificationCenter removeObserver:self];
 }
 
 @end

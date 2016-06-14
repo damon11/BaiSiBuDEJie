@@ -16,7 +16,6 @@ typedef void(^CloseVideoBlock)();
 @property (nonatomic, strong) DMTopics *topic;
 
 
-+(instancetype)videoView;
 - (void)reset;
 /** 关闭视频播放器block */
 @property (nonatomic, copy) CloseVideoBlock closeVideo;

@@ -14,7 +14,9 @@
 #import "DMTopicVideoView.h"
 #import "DMComment.h"
 #import "DMUser.h"
-@interface DMTopicCell()
+#import "DMLoginTool.h"
+#import "DMRecommendUserViewController.h"
+@interface DMTopicCell()<UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -48,13 +50,9 @@
 }
 
 
-+ (instancetype)cell{
-    return [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:nil] firstObject];
-}
-
 -(DMTopicPictureView *)pictureView{
     if(!_pictureView){
-        DMTopicPictureView *pictureView = [DMTopicPictureView pictureView];
+        DMTopicPictureView *pictureView = [DMTopicPictureView viewFromXib];
         [self.contentView addSubview:pictureView];
         _pictureView = pictureView;
     }
@@ -62,7 +60,7 @@
 }
 -(DMTopicVoiceView *)voiceView{
     if(!_voiceView){
-        DMTopicVoiceView *voiceView = [DMTopicVoiceView voiceView];
+        DMTopicVoiceView *voiceView = [DMTopicVoiceView viewFromXib];
         [self.contentView addSubview:voiceView];
         _voiceView = voiceView;
     }
@@ -70,7 +68,7 @@
 }
 -(DMTopicVideoView *)videoView{
     if(!_videoView){
-        DMTopicVideoView *videoView = [DMTopicVideoView videoView];
+        DMTopicVideoView *videoView = [DMTopicVideoView viewFromXib];
         [self.contentView addSubview:videoView];
         _videoView = videoView;
     }
@@ -94,7 +92,8 @@
     
     //设置头像
     [self.profileImageView setHeader:topic.profile_image];
-    
+    self.profileImageView.userInteractionEnabled = YES;
+    [self.profileImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headerClick)]];
 
     //设置名字
     self.nameLabel.text = topic.name;
@@ -112,6 +111,7 @@
     [self setupButtonTitle:self.caiButton count:topic.cai placeholder:@"踩"];
     [self setupButtonTitle:self.shareButton count:topic.repost placeholder:@"分享"];
     [self setupButtonTitle:self.commentButton count:topic.comment placeholder:@"评论"];
+    [self.commentButton addTarget:self action:@selector(commentButtonClick) forControlEvents:UIControlEventTouchUpInside];
     
     //设置帖子的文字内容
     self.text_label.text = topic.text;
@@ -195,9 +195,15 @@
 }
 - (IBAction)more:(id)sender {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-    UIAlertAction *save = [UIAlertAction actionWithTitle:@"收藏" style:UIAlertActionStyleDefault handler:nil];
-    UIAlertAction *report = [UIAlertAction actionWithTitle:@"举报" style:UIAlertActionStyleDefault handler:nil];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    UIAlertAction *save = [UIAlertAction actionWithTitle:@"收藏" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if([DMLoginTool getUid] == nil) return;
+    }];
+    UIAlertAction *report = [UIAlertAction actionWithTitle:@"举报" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if([DMLoginTool getUid] == nil) return;
+    }];
     
     [alertController addAction:report];
     [alertController addAction:cancel];
@@ -206,4 +212,12 @@
     [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alertController animated:YES completion:nil];
 }
 
+-(void)commentButtonClick{
+    self.commentBtnBlock();
+}
+
+-(void)headerClick{
+         
+    self.headerBlock();
+}
 @end

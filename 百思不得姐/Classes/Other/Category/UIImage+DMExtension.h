@@ -10,4 +10,5 @@
 
 @interface UIImage (DMExtension)
 -(UIImage *)circleImage;
++(UIImage *)imageWithName:(NSString *)name;
 @end
